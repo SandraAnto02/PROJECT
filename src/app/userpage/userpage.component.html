@@ -1,0 +1,112 @@
+
+<body class="userpage" >
+    <app-userheader></app-userheader>
+    <div class="container" style="margin-left: 0px; margin-right: 0px; size: 100%;">
+        <div class="row">
+            
+            <div class="col-md-4" style="padding-top: 70px; ">
+                <section class="leftcard" style="padding-top: 20px; ">
+                    <div class="card " style="width: 18rem; padding:10px; margin: 20px; background: transparent; background-color:rgba(255, 255, 255, 0.605);">
+                        
+                        <div class="card-body">
+                            
+                            <h4 class="card-title" style="color: black;">&nbsp;&nbsp; {{receivedData.phone}}</h4>
+                            <hr>
+                            
+                            <h6  style="color: rgb(0, 0, 0); font-size: large;">{{receivedData.username}}</h6>
+                            
+                            <p class="card-text">Post Paid</p>
+                            
+                        </div>
+                      </div>
+                      <div>
+                        <div class="card border-dark mb-3" style="width: 18rem; padding:20px; margin: 20px; background: transparent; background-color: rgba(255, 255, 255, 0.635);">
+                          <div>
+                            <section> 
+                              <img class="card-img-top" src="../../assets/images/userlink.jpg" alt="Card image cap">
+                            </section>
+                          </div>
+                            <div class="card-body">
+                              <h5 class="card-title" style="color: black;">Add Friends & Family</h5>
+                              
+                              <p class="card-text">Link numbers of your friends and family, to recharge, pay bills, check available data balance and much more</p><br>
+                              <button type="button" (click)="linkAccount()" class="btn btn-dark" style="margin-left: 25px;">Link New Account</button>
+                                
+                            </div>
+                          </div>
+                      </div>
+                </section>
+
+            </div>
+            <div class="col-md-8" style="padding-top: 100px; margin-right: 0px;  " >
+                <div class="card" style="background: transparent; background-color: rgba(245, 245, 245, 0.53); " *ngIf="link">
+                    <div class="card-header" style="color: rgb(14, 14, 14); " >
+                        LINK NEW ACCOUNTS
+                    </div>
+                    <div class="card-body">
+                      <h3 class="card-title" style="color: black;">ACCOUNT DETAILS</h3><br>
+                      <div class="text-center" style="margin-top: 0px;">
+                        <h2 class="fw-bold" style="color: black;"></h2>
+                        <form  [formGroup]="loginForm" (submit)="submitForm()">
+
+                          <div >
+                            <p>Name:</p>
+                            <input type="text" class="form-control" id="linkedname" placeholder="Enter your name" name="linkedname" formControlName="linkedname" [(ngModel)]="linkedData.linkedname">
+                            <div *ngIf="loginForm.get('linkedname')?.touched">
+                              <div *ngIf="loginForm.get('linkedname')?.hasError('required')">
+                                <small class="text-danger">Please enter your name</small>
+                              </div>
+                              <div *ngIf="loginForm.get('linkedname')?.hasError('pattern')">
+                                <small class="text-danger">Enter valid name</small>
+                              </div>
+                            </div>  
+                            
+                          </div>
+                        
+                    
+  
+                          <div>
+                            <p>Email ID:</p>
+                            <input type="email" class="form-control" id="linkedemail" placeholder="Enter Email ID" name="linkedemail" formControlName="linkedemail" [(ngModel)]="linkedData.linkedemail">
+                            <div *ngIf="loginForm.get('linkedemail')?.touched">
+                              <div *ngIf="loginForm.get('linkedemail')?.hasError('required')">
+                                <small class="text-danger">Email ID can't be empty</small>
+                              </div>
+                              <div *ngIf="loginForm.get('linkedemail')?.hasError('pattern')">
+                                <small class="text-danger">Invalid email format</small>
+                              </div>
+                            </div>  
+                          </div>
+
+                          <p>Phone Number:</p>
+                           <input type="tel" maxlength="10" id="linkedphone" placeholder="Enter mobile number" name="linkedphone" [(ngModel)]="inputText" [(ngModel)]="linkedData.linkedphone"  formControlName="linkedphone" (input)="checkPhoneNumberInDatabase()"><br><br>
+                            <div *ngIf="loginForm.get('linkedphone')?.touched">
+                              <div *ngIf="loginForm.get('linkedphone')?.hasError('required')">
+                              <small class="text-danger">Phone number can't be empty</small>
+                              </div>
+                              <div *ngIf="loginForm.get('linkedphone')?.hasError('pattern')">
+                              <small class="text-danger">Please enter a valid 10-digit phone number starting with 6 or 7 or 8 or 9 </small>
+                              </div>
+                                                  
+                            </div>
+
+                             <button type="submit"  class="btn btn-dark">Link Now</button><br>
+                          <!-- <button type="button" class="btn btn-dark" (click)="otpPage()">Send OTP</button><br>
+                          
+                          <div class="otp" *ngIf="otp1">  
+                            <div class="text-dark" style="color: black;">Enter 4-digit code from yout two factor authentication APP.</div>
+                              <div class="my-4 otp" style="box-sizing: border-box;">
+                                <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="configOptions"></ng-otp-input>
+                              </div>
+                             <button (click)="validateOtp()" class="btn btn-dark" [ngClass]="btnStatus">{{ this.inputDigitLeft }}</button>             
+                          </div> -->
+
+                        </form>     
+                  </div>
+                    </div>
+                  </div>
+                
+            </div>
+        </div>
+    </div>
+</body>

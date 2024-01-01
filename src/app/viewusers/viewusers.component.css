@@ -1,0 +1,53 @@
+/* Style the table container */
+.table-container {
+  margin: 20px;
+  padding-top: 80px;
+}
+
+/* Style the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}
+
+/* Style table headers */
+th {
+  background-color:rgb(0, 0, 0); /* Red background for headers */
+  color: #ffffff;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Style table rows */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+  background-color: #f7f7f7; /* Light gray for odd rows */
+}
+
+/* Style table cells (td) */
+td {
+  padding: 10px;
+  border: 1px solid #dee2e6;
+  text-align: left;
+}
+
+/* Add hover effect on rows for better interactivity */
+tr:hover {
+  background-color: #f5a5253f; /* Light red for hovered rows */
+}
+
+/* Add a border to the table headers */
+th, td {
+  border-top: 2px solid f5a425; /* Red background color */
+}
+
+/* Style alternate rows with a different color for better visibility */
+tr:nth-child(odd):hover {
+  background-color: #f5a5253f; /* Light red for hovered odd rows */
+}

@@ -1,0 +1,36 @@
+
+<app-userheader></app-userheader>
+<body style="background-color: rgb(172, 171, 171)smoke;">
+<div class="table-container" style="padding-top: 5rem;">
+    <div >
+      <table class="table table-striped">
+        <thead>
+            <tr>
+              <th>Customer ID</th>
+              <th>Plan ID</th>
+              <th>Price</th>
+              <th>Activation Date</th>
+              <th>Expiry Date</th>
+              <th>Action</th>
+                     
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of userPlans">
+              <td>{{u.userid}}</td>
+              <td>{{u.planid}}</td>
+              <td>{{u.price}}</td>
+              <td>{{u.activationdate | date:'dd/MM/yyyy'}}</td>
+              <td>{{u.expirydate | date:'dd/MM/yyyy'}}</td>
+              <td> <button routerLink="/paybill">Pay Now</button></td>
+                     
+            </tr>
+            
+          </tbody>
+      </table>
+    </div>
+  </div>
+ </body> 
+  
+
+

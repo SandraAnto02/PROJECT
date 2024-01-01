@@ -1,0 +1,56 @@
+<app-adminheader></app-adminheader>
+<div class="table-container">
+    <div >
+      <table class="table table-striped">
+        <thead>
+            <tr>
+              <th>invoice ID</th>
+              <th>User ID</th>
+              <th>Plan ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Plan Name</th>
+              <th>Activation Date</th>
+              <th>Expiry Date</th>
+              <th>Payment</th>
+              <th>Status</th>
+              <th>Service Control</th>
+              <th>Services</th>
+              <th>Action</th>       
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let i of invoiceData" [class.selected-row]="i.user_plan_id === selectedRow">
+              <td>{{i.user_plan_id}}</td>
+              <td>{{i.user_id}}</td>
+              <td>{{i.plan_id}}</td>
+              <td>{{i.username}}</td>
+              <td>{{i.email}}</td>
+              <td>{{i.phone}}</td>
+              <td>{{i.plan_name}}</td>
+              <td>{{i.activation_date}}</td>
+              <td>{{i.expiry_date}}</td>
+              <td>{{i.price}}</td>
+
+              <td>
+                <span class="badge" [ngClass]="i.isPaid ? 'bg-success' : 'bg-danger'">
+                  {{i.isPaid ? 'Paid' : 'Unpaid' }}
+                </span>
+              </td>
+              <td>
+                <label class="switch">
+                  <input class="large-checkbox" type="checkbox" [checked]="i.isPaid" (change)="togglePayment(i)">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td  (click)="toggleServices(i.userId, i.isPaid)">
+                    {{ i.isPaid ? 'Services Resumed' : 'Services Terminated' }}
+              </td>
+
+              <td><button style="background-color: rgb(255, 255, 255);" (click)="sendEmail(i.email, i.username, i.price, i.activation_date, i.expiry_date, i.plan_name,i.phone)">Send Email</button></td>       
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
